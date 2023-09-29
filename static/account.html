@@ -1,1 +1,114 @@
-<h1>My Profile</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recipes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link  rel="stylesheet" href="css/bootstrap.css">
+    <link  rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/account.css">
+</head>
+<body>
+<!-- start: content -->
+<nav class="navbar navbar-expand-lg navbar-light  border-bottom mb-3">
+    <div class="container  mb-3 ">
+        <div class="d-flex align-items-center">
+            <a class="navbar-brand" href="index.html">Recipering</a>
+            <form class="form-inline" action="#" id="search">
+                <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3"> 
+                    <label class="label-absolute" for="search_search"><i class="bi bi-search"></i><span class="sr-only">What are you looking for?</span></label>
+                    <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="search_search" placeholder="Search" aria-label="Search" type="search">
+                </div>
+            </form>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse flex-sm-grow-0" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item ">
+                    <a class="nav-link" href="myrecipes.html">My Recipes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="savedrecipes.html">Saved Recipes</a>
+                </li>
+                <li class="nav-item dropdown active">
+                    <button class="btn dropdown-toggle account-toggle-btn" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="account.html">Account</a></li>
+                      <li><a class="dropdown-item logout-btn" href="index.html">Logout</a></li>
+                    </ul>
+                  </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+        <div class="row">
+            <div>
+                <div class="profile-container">
+                    <!-- User Name / My Account -->
+                    <h1>My Account</h1>
+                    
+                    <div class="row">
+                        <!-- User Image -->
+                        <div class="col-auto">
+                            <img src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Clipart.png" alt="Profile pic" class="img-fluid profile-image">
+                        </div>
+                        
+                        <!-- Username -->
+                        <div class="col-auto">
+                            <p>Username: Lorem Ipsum</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Instructions -->
+                    <div class="profile-recipes">
+                        <h2>Published Recipes</h2>
+                        <hr/>
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                            <!-- Recipe Card 1 -->
+                            <div class="col-lg-4 col-md-6 col">
+                              <div class="card h-100">
+                                <a href="recipedetails.html">
+                                    <img src="https://www.saltandlavender.com/wp-content/uploads/2020/04/tomato-goat-cheese-pasta-recipe-1-1024x1536.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Delicious Pasta</h5>
+                                      <p class="card-text">A classic pasta dish with homemade sauce.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                      <small class="text-body-secondary">Published • 30 mins ago</small>
+                                    </div>
+                                </a>
+                              </div>
+                            </div>
+                            <!-- Recipe Card 2 -->
+                            <div class="col-lg-4 col-md-6 col">
+                              <div class="card h-100">
+                                <a href="recipedetails.html">
+                                    <img src="https://kep.cdn.indexvas.hu/1/0/1585/15856/158567/15856775_2dd2e30efeac2c5ff98b354f920c3f2f_wm.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Homemade Pizza</h5>
+                                      <p class="card-text">Create your own pizza masterpiece at home.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                      <small class="text-body-secondary">Published • 1 hour ago</small>
+                                    </div>
+                                </a>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+</div>
+<!-- end: content -->
+
+<script src="js/bootstrap.bundle.js"></script>
+</body>
+</html>

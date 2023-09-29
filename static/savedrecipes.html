@@ -12,7 +12,15 @@
 <!-- start: content -->
 <nav class="navbar navbar-expand-lg navbar-light  border-bottom mb-3">
     <div class="container  mb-3 ">
-        <a class="navbar-brand " href="index.html">Recipering</a>
+        <div class="d-flex align-items-center">
+            <a class="navbar-brand" href="index.html">Recipering</a>
+            <form class="form-inline" action="#" id="search">
+                <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3"> 
+                    <label class="label-absolute" for="search_search"><i class="bi bi-search"></i><span class="sr-only">What are you looking for?</span></label>
+                    <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="search_search" placeholder="Search" aria-label="Search" type="search">
+                </div>
+            </form>
+        </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -69,6 +77,6 @@
 </div>
 <!-- end: content -->
 
-<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap.bundle.js"></script>
 </body>
 </html>

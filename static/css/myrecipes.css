@@ -1,0 +1,24 @@
+
+.add-button{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    margin-right: 0.75rem;
+  }
+
+  .add-button > span{
+    margin-left: 0.5rem;
+    width: fit-content;
+  }
+  @media (max-width:288px){
+    .add-button{
+      margin-left: 0.75rem;
+    }
+  }
+
+  @media (max-width:400px){
+    .add-button > span{
+        display: none;
+    };
+  }

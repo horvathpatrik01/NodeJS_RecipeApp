@@ -1,0 +1,10 @@
+/* Add your custom CSS styles here */
+.profile-container {
+    margin: 20px;
+}
+.profile-image {
+    max-width: 200px;
+}
+.profile-recipes{
+    margin-top:20px;
+}
