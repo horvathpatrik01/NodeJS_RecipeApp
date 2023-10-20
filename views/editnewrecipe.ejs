@@ -1,0 +1,39 @@
+<%- include('head',{pageTitle:'Recipes'}) -%>
+<!-- start: content -->
+<%- include('navbar',{authenticated:true}) %>
+<main>
+    <div class="container">
+            <h1>New Recipe</h1>
+            <hr>
+            <form class="row g-3">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="RecipeName">
+                    <label for="floatingInput">Name of the recipe</label>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Add Short Description</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Add Image</label>
+                    <input class="form-control" type="file" id="formFile">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Add Ingredients</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Add Instructions</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+                <div class="row justify-content-between">
+                    <a class="text-decoration-none backbutton col-auto" href="myrecipes.html">
+                        <i class="bi bi-arrow-left-circle"></i><span>Back</span>
+                    </a>
+                  <button type="submit" class="btn btn-primary btn-success col-auto"><a href="recipedetails.html" class="text-reset text-decoration-none">Save</a></button>
+                </div>
+              </form>
+    </div>
+</main>
+<!-- end: content -->
+<%- include('footer') -%>

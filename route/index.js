@@ -20,16 +20,6 @@ const delSavedRecipeMW=require('../middlewares/recipe/delSavedRecipeMW');
 
 module.exports = function (app) {
     const objRepo = {};
-
-    app.use('/',
-        authHomeMW(objRepo),
-        getLatestRecipesMW(objRepo),
-        renderMW(objRepo, 'index'));
-
-    app.get('/?search',
-        findRecipesMW(objRepo),
-        renderMW(objRepo, 'index'));
-
     /*Get recipes for the user */
     app.get('/recipe/:userid',
         authMW(objRepo),
@@ -42,12 +32,12 @@ module.exports = function (app) {
         getRecipeMW(objRepo),
         delRecipeMW(objRepo));
     /*Get saved recipes for the user */
-    app.use('/recipe/saved/:userid',
+    app.get('/recipe/saved/:userid',
         authMW(objRepo),
         getSavedRecipesMW(objRepo),
         renderMW(objRepo,'savedrecipes'));
     /*Delete saved recipe from the user */
-    app.use('/recipe/saved/del/:recipeid/:userid',
+    app.get('/recipe/saved/del/:recipeid/:userid',
         authMW(objRepo),
         getUserMW(objRepo),
         getSavedRecipeMW(objRepo),
@@ -84,7 +74,7 @@ module.exports = function (app) {
         getRecipesMW(objRepo),
         renderMW(objRepo,'account'));
 
-    app.get('/account/:userid/logout',
+    app.use('/account/:userid/logout',
         authMW(objRepo),
         getUserMW(objRepo),
         signOutUserMW(objRepo));
@@ -93,7 +83,7 @@ module.exports = function (app) {
         inverseAuthMW(objRepo),
         checkRegistrationMW(objRepo),
         renderMW(objRepo, 'login'));
-    app.post('/login',
+    app.use('/login',
         inverseAuthMW(objRepo),
         checkPassMW(objRepo),
         renderMW(objRepo, 'login'));
@@ -101,4 +91,12 @@ module.exports = function (app) {
         inverseAuthMW(objRepo),
         checkForgotPasswordMW(objRepo),
         renderMW(objRepo, 'login'));
+
+    app.get('/?search',
+        findRecipesMW(objRepo),
+        renderMW(objRepo, 'index'));
+    app.use('/',
+        authHomeMW(objRepo),
+        getLatestRecipesMW(objRepo),
+        renderMW(objRepo, 'index'));
 };

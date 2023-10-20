@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light  border-bottom mb-3">
+    <div class="container  mb-3 ">
+        <div class="d-flex align-items-center">
+            <a class="navbar-brand" href="/">Recipering</a>
+            <form class="form-inline" action="#" id="search">
+                <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3"> 
+                    <label class="label-absolute" for="search_search"><i class="bi bi-search"></i><span class="sr-only">What are you looking for?</span></label>
+                    <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="search_search" placeholder="Search" aria-label="Search" type="search">
+                </div>
+            </form>
+        </div>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/recipe/1">My Recipes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/recipe/saved/1">Saved Recipes</a>
+                </li>
+                <% if (authenticated===true) { %>
+                    <li class="nav-item dropdown active">
+                        <button class="btn dropdown-toggle account-toggle-btn" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="/account/1">Account</a></li>
+                          <li><a class="dropdown-item logout-btn" href="/">Logout</a></li>
+                        </ul>
+                    </li>
+                <% } else { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                <% } %>
+                 
+            </ul>
+        </div>
+    </div>
+</nav>

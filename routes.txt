@@ -1,0 +1,128 @@
+Receptek
+
+-index.html - legutóbbi receptek listája
+-myrecipes.html - megosztott receptek listája (edit, delete), új recept gomb
+-savedrecipes.html - mentett receptek listája(delete)
+-account.html - megosztott receptek listája
+-login.html - belépés/regisztráció/új jelszó
+-editnewrecipe.html - új recept létrehozása, vagy egy meglévő módosítása(ebben az esetben a módosítandó recept adatainak lekérése)
+-recipedetails.html - egy recept információi
+
+Routing
+
+middlewares/recipe/
+    getLatestRecipesMw
+    findRecipesMw
+    getRecipesMw
+    getRecipeMW
+    saveRecipeMw
+    delRecipeMw
+    getSavedRecipesMw
+    getSavedRecipeMw
+    saveRecipeInSavedRecipesMw
+    delSavedRecipeMw
+
+middlewares/account
+    getUserMw
+    signoutUserMw 
+    checkRegistrationMw
+    checkPassMw
+    checkForgottenPasswordMw
+
+middlewares/generic
+    authMw
+    authHomeMw
+    inverseAuthMw
+    renderMw
+
+
+
+GET /                               - index.html
+    authHomeMw
+    getLatestRecipesMw
+    renderMw(index.html)
+
+GET /?search=pizza
+    findRecipesMw
+    renderMw(index.html)
+
+GET /recipe/:userid'                        - myrecipes.html
+    authMw
+    getRecipesMw
+    renderMw(myrecipes.html)
+
+GET /recipe/del/:recipeid/userid
+    authMw
+    getUserMW
+    getRecipeMW
+    delRecipeMw
+    redirect('/recipe')
+
+GET /recipe/saved/:userid                  - savedrecipes.html
+    authMw
+    getSavedRecipesMw
+    renderMw(savedrecipes.html)
+
+GET /recipe/saved/del/:recipeid/:userid
+    authMw
+    getUserMW
+    getSavedRecipeMw
+    delSavedRecipeMw
+    redirect('/recipe/saved')
+
+GET /recipe/details/:recipeid      - recipedetails.html
+    authHomeMw
+    getRecipeMW
+    renderMw(recipedetails.html)
+
+POST /recipe/details/:recipeid/add/:userid
+    authMw
+    getUserMW
+    getRecipeMW
+    saveSavedRecipesMw
+    redirect(/recipe/details/:recipeid)
+
+GET,POST /recipe/new/:userid                    - editnewrecipe.html(new)
+    authMw
+    getUserMW
+    saveRecipeMw (GET hívásra és ha nem sikerül a mentés next-et hív, ha sikerül akkor átirányít a myrecipes.html oldalra)
+    renderMw(editnewrecipe.html (new))
+            - ha volt valami érték beküldbe -> form elemek azzal töltődjenek fel
+            - ha nem, akkor nem
+
+GET,POST /recipe/edit/:recipeid/:userid         - editnewrecipe.html(edit)
+    authMw
+    getUserMW
+    getRecipeMW
+    saveRecipeMw
+    renderMw(editnewrecipe.html (new))
+            - ha volt valami érték beküldbe -> form elemek azzal töltődjenek fel
+            - ha nem, akkor nem
+
+GET /account/:userid                - account.html
+    authMw
+    getUserMw
+    getRecipesMw
+    renderMw(account.html)
+
+GET /account/:userid/logout
+    authMw
+    getUserMW
+    signoutUserMw()
+    redirect('/')
+
+POST /auth/newPw                    - felh.név ellenőrzés, új jelszó generálása, kiírása
+    inverseAuthMw()
+    checkForgottenPasswordMw(megvizsgálja a kapott felh. nevet és ha van ilyen, akkor generál egy új jelszót)
+    renderMw(login.html)
+
+POST /auth/login                    - jelszó ellenőrzés, ha ok, index.html-re redirect
+    inverseAuthMw()
+    checkPassMw(megvizsgálja a kapott felhasználónév-jelszó kombót, ha egyezik az adatbázisban lévővel akkor beléptet,
+                 egyébként visszairányít a belépéshez)
+    renderMw(login.html)
+
+POST /auth/register                 - felh. név / jelszó ellenőrzés, új fiók létrehozása
+    inverseAuthMw()
+    checkRegistrationMw(megvizsgálja a kapott felh. nevet, ha nincs még ilyen regisztrál, ha van nem)
+    renderMw(login.html)
