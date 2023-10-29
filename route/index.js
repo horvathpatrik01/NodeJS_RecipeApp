@@ -26,18 +26,21 @@ module.exports = function (app) {
         getRecipesMW(objRepo),
         renderMW(objRepo, 'myrecipes'));
     /*Delete recipe from the user */
-    app.get('/recipe/del/:recipeid/userid',
+    app.use('/recipe/del/:recipeid/:userid',
         authMW(objRepo),
         getUserMW(objRepo),
         getRecipeMW(objRepo),
-        delRecipeMW(objRepo));
+        delRecipeMW(objRepo),
+        function (req, res, next) {
+            return res.redirect('/recipe/1');
+          });
     /*Get saved recipes for the user */
     app.get('/recipe/saved/:userid',
         authMW(objRepo),
         getSavedRecipesMW(objRepo),
         renderMW(objRepo,'savedrecipes'));
     /*Delete saved recipe from the user */
-    app.get('/recipe/saved/del/:recipeid/:userid',
+    app.use('/recipe/saved/del/:recipeid/:userid',
         authMW(objRepo),
         getUserMW(objRepo),
         getSavedRecipeMW(objRepo),

@@ -34,16 +34,22 @@ nav{
 /*Card style*/
 .card img{
     height: 300px;
-}
+    object-fit: cover;
+    }
+
+    .card:hover img{
+        filter: brightness(70%);
+      }
 .card{
     transition: transform 0.3s ease-in-out;
 }
 .card a{
     color: inherit; /* Inherit the parent text color */
-    text-decoration: none; 
+    text-decoration: none;
 }
 .card:hover{
     transform: scale(1.05);
+    background: rgba(0, 0, 0, 0.3);
 }
 /*style of the back button*/
 .backbutton{
@@ -126,21 +132,16 @@ nav{
     background-color: dimgray;
 }
 /* Footer */
-.my_footer{
-    display: flex;
-    justify-content: space-between;
+.my_footer_background{
     background-color: darkslategray;
     color:whitesmoke;
     border-top: 2px solid darkred;
+}
+
+.my_footer{
+    display: flex;
+    justify-content: space-between;
     padding: 1rem 2rem 0;
-}
-
-.footer_name{
-    display: flex;
-}
-
-.footer_copyright{
-    display: flex;
 }
 
 main{

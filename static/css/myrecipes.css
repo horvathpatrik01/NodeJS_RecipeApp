@@ -11,6 +11,53 @@
     margin-left: 0.5rem;
     width: fit-content;
   }
+
+/*Card buttons*/
+.card-buttons {
+  position: absolute;
+  top: 20%;
+  display: none;
+  width: 100%;
+  justify-content: center;
+  height: fit-content;
+}
+
+.card:hover .card-buttons {
+  display: flex;
+  z-index: 1;
+}
+.edit-button  {
+  background: hsl(211, 100%, 60%);
+  color: hsl(211, 100%, 40%);
+  float: left;
+}
+
+.delete-button{
+  background: hsl(0, 100%, 50%);
+  color: hsl(0, 100%, 40%);
+}
+
+.option-button{
+  margin: 20px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 50%;
+  font-size: 3rem;
+  height: 80px;
+  width: 80px;
+}
+
+.edit-button:hover {
+  background: hsl(211, 100%, 40%);
+  color: hsl(211, 100%, 60%);
+}
+
+.delete-button:hover {
+  background: hsl(0, 100%, 40%);
+  color: hsl(0, 100%, 50%);
+}
+
   @media (max-width:288px){
     .add-button{
       margin-left: 0.75rem;
