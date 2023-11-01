@@ -33,10 +33,7 @@ module.exports = function (app) {
     authMW(objRepo),
     getUserMW(objRepo),
     getRecipeMW(objRepo),
-    delRecipeMW(objRepo),
-    function (req, res, next) {
-      return res.redirect("/recipe/1");
-    }
+    delRecipeMW(objRepo)
   );
   /*Get saved recipes for the user */
   app.get(

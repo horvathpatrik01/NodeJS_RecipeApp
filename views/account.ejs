@@ -3,7 +3,7 @@
   <link rel="stylesheet" href="/css/account.css" />
 </head>
 <!-- start: content -->
-<%- include('navbar',{authenticated:true}) %>
+<%- include('navbar',{authenticated:true,userId:_userId}) %>
 <main>
   <div class="container">
     <div class="row">
@@ -24,7 +24,7 @@
 
             <!-- Username -->
             <div class="col-auto">
-              <p>Username: Lorem Ipsum</p>
+              <p>Username: <%= userName %></p>
             </div>
           </div>
 
@@ -33,52 +33,9 @@
             <h2>Published Recipes</h2>
             <hr />
             <div class="row row-cols-1 row-cols-md-3 g-4">
-              <!-- Recipe Card 1 -->
-              <div class="col-lg-4 col-md-6 col">
-                <div class="card h-100">
-                  <a href="recipedetails.html">
-                    <img
-                      src="https://www.saltandlavender.com/wp-content/uploads/2020/04/tomato-goat-cheese-pasta-recipe-1-1024x1536.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-body">
-                      <h5 class="card-title">Delicious Pasta</h5>
-                      <p class="card-text">
-                        A classic pasta dish with homemade sauce.
-                      </p>
-                    </div>
-                    <div class="card-footer">
-                      <small class="text-body-secondary"
-                        >Published • 30 mins ago</small
-                      >
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <!-- Recipe Card 2 -->
-              <div class="col-lg-4 col-md-6 col">
-                <div class="card h-100">
-                  <a href="recipedetails.html">
-                    <img
-                      src="https://kep.cdn.indexvas.hu/1/0/1585/15856/158567/15856775_2dd2e30efeac2c5ff98b354f920c3f2f_wm.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-body">
-                      <h5 class="card-title">Homemade Pizza</h5>
-                      <p class="card-text">
-                        Create your own pizza masterpiece at home.
-                      </p>
-                    </div>
-                    <div class="card-footer">
-                      <small class="text-body-secondary"
-                        >Published • 1 hour ago</small
-                      >
-                    </div>
-                  </a>
-                </div>
-              </div>
+              <%publishedRecipes.forEach(function(recipe){ %> 
+                <%-include('recipe_card',{recipeDetails: recipe}) %> 
+              <% }); %> 
             </div>
           </div>
         </div>

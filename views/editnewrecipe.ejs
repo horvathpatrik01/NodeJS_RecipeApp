@@ -1,19 +1,21 @@
 <%- include('head',{pageTitle:'Recipes'}) -%>
 <!-- start: content -->
-<%- include('navbar',{authenticated:true}) %>
+<%- include('navbar',{authenticated:true,userId:_userId}) %>
 <main>
   <div class="container">
-    <h1>New Recipe</h1>
+    <h1><%= (typeof recipe === 'undefined') ? "New Recipe" : "Edit Recipe" %></h1>
     <hr />
-    <form action="/recipe/new/1" method="post" class="row g-3">
+    <form method="post" class="row g-3">
+      <input type="hidden" name="recipeid" value="<%= (typeof recipe === 'undefined') ? "" : recipe._id %>"/>
       <div class="form-floating mb-3">
+        <label for="floatingInput">Name of the recipe</label>
         <input
           type="text"
           class="form-control"
           id="floatingInput"
           placeholder="RecipeName"
+          value="<%= (typeof recipe === 'undefined') ? "" : recipe.name %>"
         />
-        <label for="floatingInput">Name of the recipe</label>
       </div>
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label"
@@ -23,7 +25,7 @@
           class="form-control"
           id="exampleFormControlTextarea1"
           rows="3"
-        ></textarea>
+        ><%= (typeof recipe === 'undefined') ? "" : recipe.description %></textarea>
       </div>
       <div class="mb-3">
         <label for="formFile" class="form-label">Add Image</label>
@@ -31,31 +33,27 @@
       </div>
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label"
-          >Add Ingredients</label
-        >
+          >Add Ingredients</label>
         <textarea
           class="form-control"
           id="exampleFormControlTextarea1"
           rows="3"
-        ></textarea>
+        ><%= (typeof recipe === 'undefined') ? "" : recipe.ingredients %></textarea>
       </div>
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label"
-          >Add Instructions</label
-        >
+          >Add Instructions</label>
         <textarea
           class="form-control"
           id="exampleFormControlTextarea1"
           rows="3"
-        ></textarea>
+        ><%= (typeof recipe === 'undefined') ? "" : recipe.instructions %></textarea>
       </div>
       <div class="row justify-content-between">
-        <a class="text-decoration-none backbutton col-auto" href="/recipe/1">
+        <a class="text-decoration-none backbutton col-auto" href="<%= '/recipe/' + _userId %>">
           <i class="bi bi-arrow-left-circle"></i><span>Back</span>
         </a>
-        <button type="submit" class="btn btn-primary btn-success col-auto">
-          Save
-        </button>
+        <button type="submit" class="btn btn-primary btn-success col-auto">Save</button>
       </div>
     </form>
   </div>

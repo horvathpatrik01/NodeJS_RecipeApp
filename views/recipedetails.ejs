@@ -3,21 +3,21 @@
   <link rel="stylesheet" href="/css/details.css" />
 </head>
 <!-- start: content -->
-<%- include('navbar',{authenticated:false}) %>
+<%- include('navbar',{authenticated:false,userId:_userId}) %>
 <main>
   <div class="container">
     <div class="row">
       <div>
         <div class="recipe-container">
           <!-- Recipe Name -->
-          <h1>Chocolate Cake</h1>
+          <h1><%= recipe.name%></h1>
 
           <div class="row">
             <!-- Recipe Image -->
             <div class="col-md-8">
               <img
-                src="https://www.recipetineats.com/wp-content/uploads/2018/03/Chocolate-Cake_2.jpg"
-                alt="Chocolate Cake"
+                src=<%= recipe.image %>
+                alt=<%= recipe.name %>
                 class="img-fluid recipe-image"
               />
             </div>
@@ -25,70 +25,25 @@
             <!-- Ingredients -->
             <div class="col-md-4 recipe-ingredients">
               <h2>Ingredients:</h2>
-              <ul>
-                <li>2 cups all-purpose flour</li>
-                <li>1 3/4 cups granulated sugar</li>
-                <li>3/4 cup unsweetened cocoa powder</li>
-                <li>1 1/2 tsp baking powder</li>
-                <li>1 1/2 tsp baking soda</li>
-                <li>1 tsp salt</li>
-                <li>2 eggs</li>
-                <li>1 cup buttermilk</li>
-                <li>1/2 cup vegetable oil</li>
-                <li>2 tsp pure vanilla extract</li>
-                <li>1 cup boiling water</li>
-              </ul>
+              <%= recipe.ingredients %>
             </div>
           </div>
 
           <!-- Recipe Description -->
           <p>
-            Indulge in the rich and chocolaty goodness of this homemade
-            chocolate cake. It's the perfect dessert for any occasion!
+            <%= recipe.description %>
           </p>
 
           <!-- Instructions -->
           <h2>Instructions:</h2>
-          <ol>
-            <li>
-              Preheat your oven to 350°F (175°C). Grease and flour two 9-inch
-              round cake pans.
-            </li>
-            <li>
-              In a large bowl, combine the flour, sugar, cocoa powder, baking
-              powder, baking soda, and salt.
-            </li>
-            <li>
-              Add the eggs, buttermilk, vegetable oil, and vanilla extract. Mix
-              until well combined.
-            </li>
-            <li>
-              Stir in the boiling water until the batter is smooth. The batter
-              will be thin; that's okay.
-            </li>
-            <li>Pour the batter evenly into the prepared pans.</li>
-            <li>
-              Bake for 30 to 35 minutes, or until a toothpick inserted into the
-              center comes out clean.
-            </li>
-            <li>
-              Allow the cakes to cool in the pans for 10 minutes, then remove
-              them from the pans and place them on a wire rack to cool
-              completely.
-            </li>
-            <li>
-              Once cooled, you can frost the cake with your favorite chocolate
-              frosting and enjoy!
-            </li>
-          </ol>
+          <%= recipe.instructions %>
         </div>
         <div>
-          <span
-            >By
-            <a href="/account/1" class="text-decoration-none"
-              >Mary Smith</a
-            ></span
-          >
+            <% if ( typeof recipe.publishedBy === 'undefined') { %>
+              <span class="text-body-secondary">Published • <%= recipe.published %></span>
+            <% } else { %>
+                <span class="text-body-secondary">Published by <a href="<%= '/account/' + recipe._publishedById %>"><%= recipe.publishedBy %></a> , <%= recipeDetails.published %></span>
+            <% } %>
         </div>
       </div>
     </div>

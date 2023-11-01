@@ -1,57 +1,14 @@
 <%- include('head',{pageTitle:'Saved Recipes'}) -%>
 <!-- start: content -->
-<%- include('navbar',{authenticated:true}) %>
+<%- include('navbar',{authenticated:true,userId:_userId}) %>
 <main>
   <div class="container">
     <h1>Saved Recipes</h1>
     <hr />
     <div class="row row-cols-1 row-cols-md-3 g-4">
-      <!-- Recipe Card 3 -->
-      <div class="col-lg-4 col-md-6 col">
-        <div class="card h-100">
-          <a href="recipedetails.html">
-            <img
-              src="https://www.recipetineats.com/wp-content/uploads/2018/03/Chocolate-Cake_2.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Chocolate Cake</h5>
-              <p class="card-text">
-                Indulge in this rich and moist chocolate cake.
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-body-secondary"
-                >By Mary Smith • 2 hours ago</small
-              >
-            </div>
-          </a>
-        </div>
-      </div>
-      <!-- Recipe Card 4 -->
-      <div class="col-lg-4 col-md-6 col">
-        <div class="card h-100">
-          <a href="recipedetails.html">
-            <img
-              src="https://www.recipetineats.com/wp-content/uploads/2018/03/Chocolate-Cake_2.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Chocolate Cake</h5>
-              <p class="card-text">
-                Indulge in this rich and moist chocolate cake.
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-body-secondary"
-                >By Mary Smith • 2 hours ago</small
-              >
-            </div>
-          </a>
-        </div>
-      </div>
+      <%savedRecipes.forEach(function(recipe){ %> 
+        <%-include('recipe_card',{recipeDetails: recipe,userId:_userId}) %> 
+      <% }); %> 
     </div>
   </div>
 </main>

@@ -35,10 +35,10 @@
     <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="/recipe/1">My Recipes</a>
+          <a class="nav-link" href="<%= '/recipe/' + userId %>">My Recipes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/recipe/saved/1">Saved Recipes</a>
+          <a class="nav-link" href="<%= '/recipe/saved/' + userId %>">Saved Recipes</a>
         </li>
         <% if (authenticated===true) { %>
         <li class="nav-item dropdown active">
@@ -50,8 +50,8 @@
             <i class="bi bi-person-circle"></i>
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/account/1">Account</a></li>
-            <li><a class="dropdown-item logout-btn" href="/">Logout</a></li>
+            <li><a class="dropdown-item" href="<%= '/account/' + userId %>">Account</a></li>
+            <li><a class="dropdown-item logout-btn" href="<%= '/account/' + userId +'/logout' %>">Logout</a></li>
           </ul>
         </li>
         <% } else { %>

@@ -1,22 +1,28 @@
 <div class="col-lg-4 col-md-6 col">
     <div class="card h-100">
-        <a href=<%="/recipe/details/" + recipeDetails.id %>>
-            <img src=<%= recipeDetails.image %> class="card-img-top" alt="...">
+        <a href="<%='/recipe/details/' + recipeDetails._id %>">
+            <img src="<%= recipeDetails.image %>" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title"><%= recipeDetails.title %></h5>
+                <h5 class="card-title"><%= recipeDetails.name %></h5>
                 <p class="card-text"><%= recipeDetails.text %></p>
             </div>
             <div class="card-footer">
-                <small class="text-body-secondary">Published • <%= recipeDetails.published %></small>
+                <% if (typeof recipeDetails.publishedBy === 'undefined') { %>
+                    <small class="text-body-secondary">Published • <%= recipeDetails.published %></small>
+                <% } else { %>
+                    <small class="text-body-secondary">Published by <%= recipeDetails.publishedBy %>, <%= recipeDetails.published %></small>
+                <% } %>
             </div>
-            <div class="card-buttons">
-                <a href=<%="/recipe/edit/" + recipeDetails.id +"/"+ userId %>>
-                    <button class="edit-button option-button"><i class="bi bi-pencil-fill"></i></button>
-                </a>
-                <a href=<%="/recipe/del/" + recipeDetails.id +"/"+ userId %>>
-                    <button class="delete-button option-button"><i class="bi bi-trash-fill"></i></button>
-                </a>
-            </div>
+            <% if (typeof userId !== 'undefined') { %>
+                <div class="card-buttons">
+                    <a href="<%='/recipe/edit/' + recipeDetails._id +'/'+ userId %>">
+                        <button class="edit-button option-button"><i class="bi bi-pencil-fill"></i></button>
+                    </a>
+                    <a href="<%='/recipe/del/' + recipeDetails._id +'/'+ userId %>">
+                        <button class="delete-button option-button"><i class="bi bi-trash-fill"></i></button>
+                    </a>
+                </div>
+            <% } %>
         </a>
     </div>
 </div>

@@ -1,6 +1,11 @@
 const express= require('express');
+const bodyParser = require('body-parser');
 var app = express();
+
 app.set('view engine','ejs');
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
+
 app.use(express.static('static'));
 
 // Load routing
