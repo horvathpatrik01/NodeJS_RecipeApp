@@ -1,71 +1,90 @@
 <%- include('head',{pageTitle:'Account'}) -%>
 <head>
-    <link rel="stylesheet" href="/css/account.css">
+  <link rel="stylesheet" href="/css/account.css" />
 </head>
 <!-- start: content -->
 <%- include('navbar',{authenticated:true}) %>
 <main>
-    <div class="container">
-            <div class="row">
-                <div>
-                    <div class="profile-container">
-                        <!-- User Name / My Account -->
-                        <h1>My Account</h1>
-                        
-                        <div class="row">
-                            <!-- User Image -->
-                            <div class="col-auto">
-                                <img src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Clipart.png" alt="Profile pic" class="img-fluid profile-image">
-                            </div>
-                            
-                            <!-- Username -->
-                            <div class="col-auto">
-                                <p>Username: Lorem Ipsum</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Instructions -->
-                        <div class="profile-recipes">
-                            <h2>Published Recipes</h2>
-                            <hr/>
-                            <div class="row row-cols-1 row-cols-md-3 g-4">
-                                <!-- Recipe Card 1 -->
-                                <div class="col-lg-4 col-md-6 col">
-                                  <div class="card h-100">
-                                    <a href="recipedetails.html">
-                                        <img src="https://www.saltandlavender.com/wp-content/uploads/2020/04/tomato-goat-cheese-pasta-recipe-1-1024x1536.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                          <h5 class="card-title">Delicious Pasta</h5>
-                                          <p class="card-text">A classic pasta dish with homemade sauce.</p>
-                                        </div>
-                                        <div class="card-footer">
-                                          <small class="text-body-secondary">Published • 30 mins ago</small>
-                                        </div>
-                                    </a>
-                                  </div>
-                                </div>
-                                <!-- Recipe Card 2 -->
-                                <div class="col-lg-4 col-md-6 col">
-                                  <div class="card h-100">
-                                    <a href="recipedetails.html">
-                                        <img src="https://kep.cdn.indexvas.hu/1/0/1585/15856/158567/15856775_2dd2e30efeac2c5ff98b354f920c3f2f_wm.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                          <h5 class="card-title">Homemade Pizza</h5>
-                                          <p class="card-text">Create your own pizza masterpiece at home.</p>
-                                        </div>
-                                        <div class="card-footer">
-                                          <small class="text-body-secondary">Published • 1 hour ago</small>
-                                        </div>
-                                    </a>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <div class="container">
+    <div class="row">
+      <div>
+        <div class="profile-container">
+          <!-- User Name / My Account -->
+          <h1>My Account</h1>
+
+          <div class="row">
+            <!-- User Image -->
+            <div class="col-auto">
+              <img
+                src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Clipart.png"
+                alt="Profile pic"
+                class="img-fluid profile-image"
+              />
             </div>
-            
+
+            <!-- Username -->
+            <div class="col-auto">
+              <p>Username: Lorem Ipsum</p>
+            </div>
+          </div>
+
+          <!-- Instructions -->
+          <div class="profile-recipes">
+            <h2>Published Recipes</h2>
+            <hr />
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+              <!-- Recipe Card 1 -->
+              <div class="col-lg-4 col-md-6 col">
+                <div class="card h-100">
+                  <a href="recipedetails.html">
+                    <img
+                      src="https://www.saltandlavender.com/wp-content/uploads/2020/04/tomato-goat-cheese-pasta-recipe-1-1024x1536.jpg"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Delicious Pasta</h5>
+                      <p class="card-text">
+                        A classic pasta dish with homemade sauce.
+                      </p>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-body-secondary"
+                        >Published • 30 mins ago</small
+                      >
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <!-- Recipe Card 2 -->
+              <div class="col-lg-4 col-md-6 col">
+                <div class="card h-100">
+                  <a href="recipedetails.html">
+                    <img
+                      src="https://kep.cdn.indexvas.hu/1/0/1585/15856/158567/15856775_2dd2e30efeac2c5ff98b354f920c3f2f_wm.jpg"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Homemade Pizza</h5>
+                      <p class="card-text">
+                        Create your own pizza masterpiece at home.
+                      </p>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-body-secondary"
+                        >Published • 1 hour ago</small
+                      >
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </main>
 <!-- end: content -->
 <%- include('footer') -%>

@@ -1,16 +1,15 @@
+.add-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  margin-right: 0.75rem;
+}
 
-.add-button{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 0.5rem;
-    margin-right: 0.75rem;
-  }
-
-  .add-button > span{
-    margin-left: 0.5rem;
-    width: fit-content;
-  }
+.add-button > span {
+  margin-left: 0.5rem;
+  width: fit-content;
+}
 
 /*Card buttons*/
 .card-buttons {
@@ -26,18 +25,18 @@
   display: flex;
   z-index: 1;
 }
-.edit-button  {
+.edit-button {
   background: hsl(211, 100%, 60%);
   color: hsl(211, 100%, 40%);
   float: left;
 }
 
-.delete-button{
+.delete-button {
   background: hsl(0, 100%, 50%);
   color: hsl(0, 100%, 40%);
 }
 
-.option-button{
+.option-button {
   margin: 20px;
   border: none;
   cursor: pointer;
@@ -58,14 +57,14 @@
   color: hsl(0, 100%, 50%);
 }
 
-  @media (max-width:288px){
-    .add-button{
-      margin-left: 0.75rem;
-    }
+@media (max-width: 288px) {
+  .add-button {
+    margin-left: 0.75rem;
   }
+}
 
-  @media (max-width:400px){
-    .add-button > span{
-        display: none;
-    };
+@media (max-width: 400px) {
+  .add-button > span {
+    display: none;
   }
+}

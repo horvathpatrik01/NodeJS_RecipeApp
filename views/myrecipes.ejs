@@ -1,46 +1,38 @@
 <%- include('head',{pageTitle:'My Recipes'}) -%>
 <head>
-  <link rel="stylesheet" href="/css/myrecipes.css">
+  <link rel="stylesheet" href="/css/myrecipes.css" />
 </head>
 <%- include('navbar',{authenticated:true}) %>
 <!-- start: content -->
 <main>
   <div class="container">
-          <div class="row align-items-center">
-            <h1 class="col" >My Recipes</h1>
-            <!-- Add button at the end -->
-            <a href="/recipe/new/1" class="btn btn-outline-success add-button col-auto">
-              <i class="bi bi-plus-circle"></i>
-              <span>New Recipe</span></a> 
-  
-          </div>
-          <hr>
-          <div class="row row-cols-1 row-cols-md-3 g-4">
-              <%- include('recipe_card',{recipeDetails:{
-                title: 'Homemade Pizza',
-                text: 'Create your own pizza masterpiece at home.',
-                published: '1 hour ago',
-                id: 2,
-                image: "https://kep.cdn.indexvas.hu/1/0/1585/15856/158567/15856775_2dd2e30efeac2c5ff98b354f920c3f2f_wm.jpg"
-                }, userId:1
-              }) %>
-              <%- include('recipe_card',{recipeDetails:{
-                title: 'Delicious Pasta',
-                text: 'A classic pasta dish with homemade sauce.',
-                published: '2 hours ago',
-                id: 3,
-                image: "https://www.saltandlavender.com/wp-content/uploads/2020/04/tomato-goat-cheese-pasta-recipe-1-1024x1536.jpg"
-                }, userId:1
-              }) %>
-              <%- include('recipe_card',{recipeDetails:{
-                title: 'Chocolate Cake',
-                text: 'Indulge in this rich and moist chocolate cake.',
-                published: '30 mins ago',
-                id: 1,
-                image: "https://www.recipetineats.com/wp-content/uploads/2018/03/Chocolate-Cake_2.jpg"
-                }, userId:1
-              }) %>
-          </div>
+    <div class="row align-items-center">
+      <h1 class="col">My Recipes</h1>
+      <!-- Add button at the end -->
+      <a
+        href="/recipe/new/1"
+        class="btn btn-outline-success add-button col-auto"
+      >
+        <i class="bi bi-plus-circle"></i>
+        <span>New Recipe</span></a
+      >
+    </div>
+    <hr />
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <%- include('recipe_card',{recipeDetails:{ title: 'Homemade Pizza', text:
+      'Create your own pizza masterpiece at home.', published: '1 hour ago', id:
+      2, image:
+      "https://kep.cdn.indexvas.hu/1/0/1585/15856/158567/15856775_2dd2e30efeac2c5ff98b354f920c3f2f_wm.jpg"
+      }, userId:1 }) %> <%- include('recipe_card',{recipeDetails:{ title:
+      'Delicious Pasta', text: 'A classic pasta dish with homemade sauce.',
+      published: '2 hours ago', id: 3, image:
+      "https://www.saltandlavender.com/wp-content/uploads/2020/04/tomato-goat-cheese-pasta-recipe-1-1024x1536.jpg"
+      }, userId:1 }) %> <%- include('recipe_card',{recipeDetails:{ title:
+      'Chocolate Cake', text: 'Indulge in this rich and moist chocolate cake.',
+      published: '30 mins ago', id: 1, image:
+      "https://www.recipetineats.com/wp-content/uploads/2018/03/Chocolate-Cake_2.jpg"
+      }, userId:1 }) %>
+    </div>
   </div>
 </main>
 <!-- end: content -->
