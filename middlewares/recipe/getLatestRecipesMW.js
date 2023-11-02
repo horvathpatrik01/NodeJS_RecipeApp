@@ -6,6 +6,7 @@
 
 module.exports = function (objectrepository) {
     return function (req, res, next) {
+        // Default test values for the index page
         res.locals.latestRecipes= [
             {
                 _id: "1",

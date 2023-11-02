@@ -3,7 +3,7 @@ const db = require('../config/db');
 
 const Recipe = db.model('Recipe', {
     name: String,
-    image: Image,
+    image: String,
     description: String,
     ingredients: String,
     instructions: String,

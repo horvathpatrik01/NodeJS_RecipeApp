@@ -1,21 +1,23 @@
 const Schema = require('mongoose').Schema;
 const db = require('../config/db');
 
-const User = db.model('User', {
-  username: String,
-  password: String,
-  recipes:[
+const userSchema = new Schema({
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  recipes: [
     {
-        type:Schema.Types.ObjectId,
-        ref:'Recipe'
-    }
+      type: Schema.Types.ObjectId,
+      ref: 'Recipe'
+    },
   ],
-  savedRecipes:[
+  savedRecipes: [
     {
-        type:Schema.Types.ObjectId,
-        ref:'Recipe'
-    }
-  ]
+      type: Schema.Types.ObjectId,
+      ref: 'Recipe'
+    },
+  ],
 });
 
+const User = db.model('User', userSchema);
+User.ensureIndexes();
 module.exports = User;

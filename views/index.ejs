@@ -1,6 +1,6 @@
 <%- include('head',{pageTitle:'Recipering'}) -%>
 <!-- start: content -->
-<%- include('navbar',{authenticated:false,userId:_userId}) %>
+<%- include('navbar',{authenticated:isAuthenticated,userId:(typeof _userId==='undefined') ? 0 : _userId}) %>
 <main>
   <div class="container">
     <div class="jumbotron">

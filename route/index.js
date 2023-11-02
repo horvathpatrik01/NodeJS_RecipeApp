@@ -18,9 +18,16 @@ const getSavedRecipeMW = require("../middlewares/recipe/getSavedRecipeMW");
 const saveSavedRecipeMW = require("../middlewares/recipe/saveRecipeInSavedRecipesMW");
 const delSavedRecipeMW = require("../middlewares/recipe/delSavedRecipeMW");
 
+const recipeModel = require('../models/recipe');
+const userModel = require('../models/user');
+
 module.exports = function (app) {
-  const objRepo = {};
+  var objRepo = {
+    Recipe:recipeModel,
+    User: userModel
+  };
   /*Get recipes for the user */
+  console.log(objRepo);
   app.get(
     "/recipe/:userid",
     authMW(objRepo),
