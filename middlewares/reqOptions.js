@@ -6,9 +6,9 @@
  */
 
 function reqOption(objectRepository, propertyName) {
-    if (objectRepository && objectRepository[propertyName]) {
-        return objectRepository[propertyName];
-    }
+  if (objectRepository && objectRepository[propertyName]) {
+    return objectRepository[propertyName];
+  }
 }
 
 module.exports.reqOption = reqOption;

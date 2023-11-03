@@ -1,6 +1,6 @@
 <%- include('head',{pageTitle:'Recipes'}) -%>
 <!-- start: content -->
-<%- include('navbar',{authenticated:true,userId:_userId}) %>
+<%- include('navbar',{authenticated:isAuthenticated,userId:_userId}) %>
 <main>
   <div class="container">
     <h1><%= (typeof recipe === 'undefined') ? "New Recipe" : "Edit Recipe" %></h1>

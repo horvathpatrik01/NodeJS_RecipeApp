@@ -16,22 +16,26 @@
         <form method="post" >
           <div class="form-floating mb-3">
             <input
-              type="text"
-              class="form-control"
-              id="floatingInput"
-              placeholder="Username"
-              name="username"
+            type="text"
+            class="form-control <%= (typeof registerError !== 'undefined') ? 'is-invalid' : '' %>"
+            id="floatingInput"
+            placeholder="Username"
+            name="username"
             />
             <label for="floatingInput">Username</label>
+
+            <% if (typeof registerError !== 'undefined') { %>
+              <div class="invalid-feedback"><%= registerError %></div>
+            <% } %>
           </div>
           <div class="form-floating">
             <input
-              type="password"
-              class="form-control <%=(typeof error === 'undefined') ? '' : 'is-invalid'%>"
-              id="floatingPassword"
-              placeholder="Password"
-              name="password"
-              />
+            type="password"
+            class="form-control <%=(typeof error !== 'undefined') ? 'is-invalid': '' %>"
+            id="floatingPassword"
+            placeholder="Password"
+            name="password"
+            />
             <label for="floatingPassword">Password</label>
             <% if (typeof error !== 'undefined') { %>
               <div class="invalid-feedback"><%= error %></div>

@@ -4,15 +4,18 @@
  */
 
 const User = require("../../models/user");
-
+const reqOption = require("../reqOptions").reqOption;
 module.exports = function (objectrepository) {
-  return async function (req, res, next) {
-    var UserModel = objectrepository["User"];
-    const user = await UserModel.findById(req.session._userId)
+  return function (req, res, next) {
+    const UserModel = objectrepository["User"];
+    const user = UserModel.findById(req.params.userid)
       .then((userByID) => {
-        res.locals.user = userByID;
+        res.locals._userId = userByID._id;
+        res.locals.userName = userByID.username;
       })
-      .cath(console.error);
+      .catch((e) => {
+        console.log("Error: " + e);
+      });
     return next();
   };
 };

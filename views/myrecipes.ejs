@@ -3,7 +3,7 @@
 <head>
   <link rel="stylesheet" href="/css/myrecipes.css" />
 </head>
-<%- include('navbar',{authenticated:true,userId:_userId}) %>
+<%- include('navbar',{authenticated:isAuthenticated,userId:_userId}) %>
 <!-- start: content -->
 <main>
   <div class="container">
@@ -20,9 +20,13 @@
     </div>
     <hr />
     <div class="row row-cols-1 row-cols-md-3 g-4">
-      <% recipes.forEach(function(recipe){ %> 
-        <%-include('recipe_card',{recipeDetails: recipe, userId:_userId }) %> 
-      <% }); %>
+      <% if (typeof recipes !=="undefined" && recipes.length > 0) { %>
+        <% recipes.forEach(function(recipe){ %> 
+          <%-include('recipe_card',{recipeDetails: recipe, userId:_userId }) %> 
+        <% }); %>
+      <% } else { %>
+        <h3>There are no published recipes</h3>
+       <% } %>
     </div>
   </div>
 </main>

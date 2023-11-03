@@ -1,14 +1,18 @@
 <%- include('head',{pageTitle:'Saved Recipes'}) -%>
 <!-- start: content -->
-<%- include('navbar',{authenticated:true,userId:_userId}) %>
+<%- include('navbar',{authenticated:isAuthenticated,userId:_userId}) %>
 <main>
   <div class="container">
     <h1>Saved Recipes</h1>
     <hr />
     <div class="row row-cols-1 row-cols-md-3 g-4">
-      <%savedRecipes.forEach(function(recipe){ %> 
-        <%-include('recipe_card',{recipeDetails: recipe,userId:_userId}) %> 
-      <% }); %> 
+      <% if (typeof savedRecipes !=="undefined" && savedRecipes.length > 0) { %>
+        <% savedRecipes.forEach(function(recipe){ %> 
+          <%-include('recipe_card',{recipeDetails: recipe, userId:_userId, deleteOnly:true }) %> 
+        <% }); %>
+      <% } else { %>
+        <h3>There are no saved recipes</h3>
+       <% } %>
     </div>
   </div>
 </main>

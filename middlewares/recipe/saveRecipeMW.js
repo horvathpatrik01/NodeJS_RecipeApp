@@ -3,9 +3,9 @@
  * If res.locals.recipe is there, it's an update otherwise this middleware creates an entity
  * Redirects to /recipe after success
  */
-
+const reqOption = require("../reqOptions").reqOption;
 module.exports = function (objectrepository) {
-    return function (req, res, next) {
-        next();
-    };
+  return function (req, res, next) {
+    next();
+  };
 };

@@ -3,7 +3,7 @@
   <link rel="stylesheet" href="/css/details.css" />
 </head>
 <!-- start: content -->
-<%- include('navbar',{authenticated:false,userId:_userId}) %>
+<%- include('navbar',{authenticated:isAuthenticated,userId:_userId}) %>
 <main>
   <div class="container">
     <div class="row">
@@ -42,7 +42,7 @@
             <% if ( typeof recipe.publishedBy === 'undefined') { %>
               <span class="text-body-secondary">Published • <%= recipe.published %></span>
             <% } else { %>
-                <span class="text-body-secondary">Published by <a href="<%= '/account/' + recipe._publishedById %>"><%= recipe.publishedBy %></a> , <%= recipeDetails.published %></span>
+                <span class="text-body-secondary">Published by <a href="<%= '/account/' + recipe.publisher %>"><%= recipe.publishedBy %></a> , <%= recipeDetails.published %></span>
             <% } %>
         </div>
       </div>

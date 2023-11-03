@@ -93,7 +93,7 @@ module.exports = function (app) {
   /* Load user's info and shared recipes*/
   app.get(
     "/account/:userid",
-    authMW(objRepo),
+    authHomeMW(objRepo),
     getUserMW(objRepo),
     getRecipesMW(objRepo),
     renderMW(objRepo, "account")
@@ -102,7 +102,6 @@ module.exports = function (app) {
   app.use(
     "/account/:userid/logout",
     authMW(objRepo),
-    getUserMW(objRepo),
     signOutUserMW(objRepo)
   );
   /* Login screen */

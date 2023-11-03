@@ -12,9 +12,14 @@
     <h2>Latest Recipes</h2>
     <hr />
     <div class="row row-cols-1 row-cols-md-3 g-4">
-      <%latestRecipes.forEach(function(recipe){ %> 
-        <%-include('recipe_card',{recipeDetails: recipe}) %> 
-      <% }); %> 
+      
+      <% if (typeof latestRecipes !=="undefined" && latestRecipes.length > 0) { %>
+        <%latestRecipes.forEach(function(recipe){ %> 
+          <%-include('recipe_card',{recipeDetails: recipe}) %> 
+        <% }); %>
+      <% } else { %>
+        <h3>There are no recipes on the site yet. Add one yourself!</h3>
+       <% } %>
     </div>
   </div>
 </main>

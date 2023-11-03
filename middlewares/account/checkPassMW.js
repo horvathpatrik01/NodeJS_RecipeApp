@@ -5,7 +5,7 @@
  */
 const reqOption = require("../reqOptions").reqOption;
 module.exports = function (objectrepository) {
-  var UserModel = reqOption(objectrepository, "User");
+  const UserModel = reqOption(objectrepository, "User");
   return async function (req, res, next) {
     if (
       typeof req.body.password === "undefined" ||
@@ -16,17 +16,20 @@ module.exports = function (objectrepository) {
     const { username, password } = req.body;
     console.log(`Username: ${username}, Password: ${password} `);
     try {
-      const user = await UserModel.findOne({ username: username, password: password }).exec();
-      console.log("\nUser:" +user);
+      const user = await UserModel.findOne({
+        username: username,
+        password: password,
+      }).exec();
+      console.log("\nUser:" + user);
       if (user) {
         // Authentication successful
         req.session.belepve = true;
         req.session._userid = user._id;
         await req.session.save();
-        return res.redirect('/');
+        return res.redirect("/");
       } else {
         // Authentication failed
-        res.locals.error = 'Hibás jelszó!';
+        res.locals.error = "Hibás jelszó!";
         // Handle the error, e.g., display an error message
         // or redirect to a login page with an error message
         // res.render('login', { error: 'Hibás jelszó!' });
@@ -34,7 +37,7 @@ module.exports = function (objectrepository) {
     } catch (error) {
       // Handle any potential errors, e.g., log the error or send an error response
       console.error(error);
-      return res.status(500).send('Internal Server Error');
+      return res.status(500).send("Internal Server Error");
     }
 
     return next();
