@@ -27,7 +27,6 @@ module.exports = function (app) {
     User: userModel
   };
   /*Get recipes for the user */
-  console.log(objRepo);
   app.get(
     "/recipe/:userid",
     authMW(objRepo),
