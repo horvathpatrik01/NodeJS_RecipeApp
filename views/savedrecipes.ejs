@@ -1,11 +1,14 @@
 <%- include('head',{pageTitle:'Saved Recipes'}) -%>
+<head>
+  <link rel="stylesheet" href="/css/myrecipes.css" />
+</head>
 <!-- start: content -->
 <%- include('navbar',{authenticated:isAuthenticated,userId:_userId}) %>
 <main>
   <div class="container">
     <h1>Saved Recipes</h1>
     <hr />
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row g-4">
       <% if (typeof savedRecipes !=="undefined" && savedRecipes.length > 0) { %>
         <% savedRecipes.forEach(function(recipe){ %> 
           <%-include('recipe_card',{recipeDetails: recipe, userId:_userId, deleteOnly:true }) %> 

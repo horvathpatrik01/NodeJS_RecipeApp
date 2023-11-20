@@ -3,18 +3,29 @@
   <link rel="stylesheet" href="/css/details.css" />
 </head>
 <!-- start: content -->
-<%- include('navbar',{authenticated:isAuthenticated,userId:_userId}) %>
+<%- include('navbar',{authenticated:isAuthenticated,userId:(typeof _userId==='undefined') ? 0 : _userId}) %>
 <main>
   <div class="container">
     <div class="row">
       <div>
         <div class="recipe-container">
-          <!-- Recipe Name -->
-          <h1><%= recipe.name%></h1>
-
+          <div class="row align-items-center">
+            <!-- Recipe Name -->
+            <h1 class="col"><%= recipe.name%></h1>
+            <!-- Add button at the end -->
+            <% if (isAuthenticated && typeof recipe.publishedBy !== 'undefined') { %>
+              <a
+                href="<%= '/recipe/details/'+recipe._id +'/add/' + _userId %>"
+                class="btn btn-outline-success add-button col-auto"
+              >
+                <i class="bi bi-plus-circle"></i>
+                <span>Save Recipe</span></a
+              >
+            <% } %>
+          </div>
           <div class="row">
             <!-- Recipe Image -->
-            <div class="col-md-8">
+            <div class="col-md-6">
               <img
                 src=<%= recipe.image %>
                 alt=<%= recipe.name %>
@@ -23,27 +34,28 @@
             </div>
 
             <!-- Ingredients -->
-            <div class="col-md-4 recipe-ingredients">
+            <div class="col-md-6 recipe-ingredients">
               <h2>Ingredients:</h2>
               <%= recipe.ingredients %>
             </div>
           </div>
 
           <!-- Recipe Description -->
-          <p>
+          <p class="mt-3">
+            <h2>Description:</h2>
             <%= recipe.description %>
           </p>
 
           <!-- Instructions -->
           <h2>Instructions:</h2>
           <%= recipe.instructions %>
-        </div>
-        <div>
-            <% if ( typeof recipe.publishedBy === 'undefined') { %>
-              <span class="text-body-secondary">Published • <%= recipe.published %></span>
-            <% } else { %>
-                <span class="text-body-secondary">Published by <a href="<%= '/account/' + recipe.publisher %>"><%= recipe.publishedBy %></a> , <%= recipeDetails.published %></span>
-            <% } %>
+          <div class="mt-3">
+              <% if ( typeof recipe.publishedBy === 'undefined') { %>
+                <span class="text-body-secondary">Published • <%= recipe.published %></span>
+              <% } else { %>
+                  <span class="text-body-secondary">Published by <a class="publisher-link" href="<%= '/account/' + recipe.publisher %>"><%= recipe.publishedBy %></a> , <%= recipe.published %></span>
+              <% } %>
+          </div>
         </div>
       </div>
     </div>

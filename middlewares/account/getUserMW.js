@@ -6,16 +6,15 @@
 const User = require("../../models/user");
 const reqOption = require("../reqOptions").reqOption;
 module.exports = function (objectrepository) {
-  return function (req, res, next) {
-    const UserModel = objectrepository["User"];
-    const user = UserModel.findById(req.params.userid)
-      .then((userByID) => {
-        res.locals._userId = userByID._id;
-        res.locals.userName = userByID.username;
-      })
-      .catch((e) => {
-        console.log("Error: " + e);
-      });
+  return async function (req, res, next) {
+    try{
+      const UserModel = objectrepository["User"];
+      const userById = await UserModel.findById(req.params.userid).exec();
+      res.locals.user=userById;
+    }catch (error) {
+      console.error(error);
+      return res.status(500).send("Internal Server Error");
+    }
     return next();
   };
 };

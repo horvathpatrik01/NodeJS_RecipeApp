@@ -5,7 +5,7 @@
 const reqOption = require("../reqOptions").reqOption;
 module.exports = function (objectrepository) {
   return async function (req, res, next) {
-    const UserModel = objectrepository["User"];
+    const UserModel = reqOption(objectrepository,"User");
     const { username, password } = req.body;
     try {
       // Create a new user
@@ -35,8 +35,6 @@ module.exports = function (objectrepository) {
           res.locals.registerErrorCode = error.code;
           console.log(error.code);
         });
-      console.log(typeof res.locals.registerError);
-      console.log(res.locals.registerError);
       if (
         typeof res.locals.registerErrorCode === "undefined" &&
         req.session.belepve === true

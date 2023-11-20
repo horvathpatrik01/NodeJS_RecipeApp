@@ -5,7 +5,15 @@
  */
 const reqOption = require("../reqOptions").reqOption;
 module.exports = function (objectrepository) {
-  return function (req, res, next) {
-    next();
+  return async function (req, res, next) {
+    let user = res.locals.user;
+    try{
+      user.savedRecipes.push(res.locals.recipe._id);
+      await user.save();
+    }catch (error) {
+      console.error(error);
+      return res.status(500).send("Internal Server Error");
+    }
+    return res.redirect("/recipe/details/" + res.locals.recipe._id);
   };
 };

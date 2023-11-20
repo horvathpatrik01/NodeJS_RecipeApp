@@ -3,7 +3,7 @@
   <link rel="stylesheet" href="/css/account.css" />
 </head>
 <!-- start: content -->
-<%- include('navbar',{authenticated:isAuthenticated,userId:_userId}) %>
+<%- include('navbar',{authenticated:isAuthenticated,userId:(typeof _userId==='undefined') ? 0 : _userId}) %>
 <main>
   <div class="container">
     <div class="row">
@@ -24,7 +24,7 @@
 
             <!-- Username -->
             <div class="col-auto">
-              <p>Username: <%= userName %></p>
+              <p>Username: <%= user.username %></p>
             </div>
           </div>
 

@@ -7,17 +7,32 @@ const dateFormat = require("../formatDate");
 module.exports = function (objectrepository) {
   return async function (req, res, next) {
     const RecipeModel = reqOption(objectrepository,"Recipe");
+    const UserModel = reqOption(objectrepository,"User");
     try{
       const recipe = await RecipeModel.findById(req.params.recipeid).exec();
-    if(typeof res.locals.username !== 'undefined'){
+    if(typeof res.locals.user !== 'undefined'){
       res.locals.recipe = recipe;
     }
     else{
+      const user = await UserModel.findById(recipe.publisher).exec();
+      let publisherName = user.username;
+
+      if (
+        res.locals.isAuthenticated === true &&
+        res.locals._userId == recipe.publisher
+      ) {
+        publisherName = undefined;
+      }
       const modifiedRecipe = {
         _id: recipe._id,
         name: recipe.name,
-        text: recipe.description,
         image: recipe.image,
+        description: recipe.description,
+        ingredients:recipe.ingredients,
+        instructions:recipe.instructions,
+        publisher:recipe.publisher,
+        publishedBy:
+              typeof publisherName !== "undefined" ? publisherName : undefined,
         published: dateFormat(recipe.published),
       };
       res.locals.recipe = modifiedRecipe;

@@ -45,6 +45,7 @@ module.exports = function (app) {
   app.get(
     "/recipe/saved/:userid",
     authMW(objRepo),
+    getUserMW(objRepo),
     getSavedRecipesMW(objRepo),
     renderMW(objRepo, "savedrecipes")
   );
@@ -52,8 +53,6 @@ module.exports = function (app) {
   app.use(
     "/recipe/saved/del/:recipeid/:userid",
     authMW(objRepo),
-    getUserMW(objRepo),
-    getSavedRecipeMW(objRepo),
     delSavedRecipeMW(objRepo)
   );
   /*Display a recipe's details */

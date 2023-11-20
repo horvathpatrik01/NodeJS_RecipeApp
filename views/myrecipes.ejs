@@ -19,7 +19,7 @@
       >
     </div>
     <hr />
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row g-4">
       <% if (typeof recipes !=="undefined" && recipes.length > 0) { %>
         <% recipes.forEach(function(recipe){ %> 
           <%-include('recipe_card',{recipeDetails: recipe, userId:_userId }) %> 

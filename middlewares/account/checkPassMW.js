@@ -14,13 +14,11 @@ module.exports = function (objectrepository) {
       return next();
     }
     const { username, password } = req.body;
-    console.log(`Username: ${username}, Password: ${password} `);
     try {
       const user = await UserModel.findOne({
         username: username,
         password: password,
       }).exec();
-      console.log("\nUser:" + user);
       if (user) {
         // Authentication successful
         req.session.belepve = true;
