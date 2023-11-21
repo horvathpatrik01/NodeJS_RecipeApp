@@ -25,18 +25,17 @@ module.exports = function (objectrepository) {
             // The error code 11000 indicates a duplicate key error (E11000 duplicate key error collection).
             // Handle the duplicate username error here.
             //console.error('Username already exists\n');
-            res.locals.registerError = "Username already exists.";
+            res.locals.usernameError = "Username already exists.";
           } else {
             // Handle other errors
             console.error(error);
-            res.locals.registerError =
+            res.locals.usernameError =
               "Something happened, but not the username";
           }
-          res.locals.registerErrorCode = error.code;
           console.log(error.code);
         });
       if (
-        typeof res.locals.registerErrorCode === "undefined" &&
+        typeof res.locals.usernameError === "undefined" &&
         req.session.belepve === true
       ) {
         await req.session.save();

@@ -10,6 +10,7 @@ module.exports = function (objectrepository) {
     ) {
       res.locals.isAuthenticated = true;
       res.locals._userId = req.session._userid;
+      req.session.cookie.maxAge = 180000;
     } else {
       res.locals.isAuthenticated = false;
     }

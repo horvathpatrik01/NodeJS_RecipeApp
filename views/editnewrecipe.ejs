@@ -5,31 +5,31 @@
   <div class="container">
     <h1><%= (typeof recipe === 'undefined') ? "New Recipe" : "Edit Recipe" %></h1>
     <hr />
-    <form method="post" class="row g-3">
-      <input type="hidden" name="recipeid" value="<%= (typeof recipe === 'undefined') ? "" : recipe._id %>"/>
-      <div class="form-floating mb-3">
-        <label for="floatingInput">Name of the recipe</label>
+    <form method="post" class="row g-3" enctype="multipart/form-data">
+      <input type="hidden" name="recipeId" value="<%= (typeof recipe === 'undefined') ? "" : recipe._id %>"/>
+      <div class="mb-3">
+        <label for="nameInput">Name of the recipe</label>
         <input
           type="text"
           class="form-control"
-          id="floatingInput"
+          id="nameInput"
           placeholder="RecipeName"
+          name="recipeName"
           value="<%= (typeof recipe === 'undefined') ? "" : recipe.name %>"
         />
       </div>
       <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label"
-          >Add Short Description</label
-        >
-        <textarea
+        <label for="exampleFormControlTextarea1" class="form-label">Add Short Description</label>
+        <textarea 
           class="form-control"
           id="exampleFormControlTextarea1"
           rows="3"
+          name="recipeDescription"
         ><%= (typeof recipe === 'undefined') ? "" : recipe.description %></textarea>
       </div>
       <div class="mb-3">
         <label for="formFile" class="form-label">Add Image</label>
-        <input class="form-control" type="file" id="formFile" />
+        <input class="form-control" type="file" id="formFile" name="recipeImage" accept="image/png, image/jpeg"/>
       </div>
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label"
@@ -38,6 +38,7 @@
           class="form-control"
           id="exampleFormControlTextarea1"
           rows="3"
+          name="recipeIngredients"
         ><%= (typeof recipe === 'undefined') ? "" : recipe.ingredients %></textarea>
       </div>
       <div class="mb-3">
@@ -47,6 +48,7 @@
           class="form-control"
           id="exampleFormControlTextarea1"
           rows="3"
+          name="recipeInstructions"
         ><%= (typeof recipe === 'undefined') ? "" : recipe.instructions %></textarea>
       </div>
       <div class="row justify-content-between">

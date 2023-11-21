@@ -1,21 +1,23 @@
 <div class="col-lg-4 col-md-6 col">
-    <div class="card h-100">
-        <a href="<%='/recipe/details/' + recipeDetails._id %>">
-            <img src="<%= recipeDetails.image %>" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title"><%= recipeDetails.name %></h5>
-                <p class="card-text"><%= recipeDetails.text %></p>
-            </div>
-            <div class="card-footer">
-                <% if (typeof recipeDetails.publishedBy === 'undefined') { %>
-                    <small class="text-body-secondary">Published • <%= recipeDetails.published %></small>
-                <% } else { %>
-                    <small class="text-body-secondary">Published by <%= recipeDetails.publishedBy %>, <%= recipeDetails.published %></small>
-                <% } %>
-            </div>
+    <div class="card h-100 d-flex ">
+        <a href="<%='/recipe/details/' + recipeDetails._id %>" class="d-flex flex-column flex-fill">
+                <img src="<%= recipeDetails.image %>" class="card-img-top" alt="...">
+                <div class="card-body flex-grow-1">
+                    <h5 class="card-title"><%= recipeDetails.name %></h5>
+                    <p class="card-text"><%= recipeDetails.text %></p>
+                </div>
+                <div class="flex-grow-1"></div>
+                <div class="card-footer mt-auto mb-0">
+                    <% if (typeof recipeDetails.publishedBy === 'undefined') { %>
+                        <small class="text-body-secondary">Published • <%= recipeDetails.published %></small>
+                    <% } else { %>
+                        <small class="text-body-secondary">Published by <%= recipeDetails.publishedBy %>, <%= recipeDetails.published %></small>
+                    <% } %>
+                </div>
+        </a>
             <% if (typeof userId !== 'undefined') { %>
                 <div class="card-buttons">
-                    <% if (typeof deleteOnly !== 'undefined'|| (typeof deleteOnly !== 'undefined' && deleteOnly)) { %>
+                    <% if (typeof deleteOnly !== 'undefined' && deleteOnly) { %>
                         <a href="<%='/recipe/saved/del/' + recipeDetails._id +'/'+ userId %>">
                             <button class="delete-button option-button"><i class="bi bi-trash-fill"></i></button>
                         </a>
@@ -29,6 +31,5 @@
                     <% }%>
                 </div>
             <% } %>
-        </a>
     </div>
 </div>

@@ -5,6 +5,7 @@ function formatTimeAgo(date) {
   // Define time intervals in milliseconds
   const minute = 60 * 1000;
   const hour = 60 * minute;
+  const day = 24 * hour;
 
   if (timeDifference < minute) {
     return (
@@ -18,10 +19,16 @@ function formatTimeAgo(date) {
         ? " minute ago"
         : " minutes ago")
     );
-  } else {
+  } else if(timeDifference < day){
     return (
       Math.floor(timeDifference / hour) +
       (Math.floor(timeDifference / hour) === 1 ? " hour ago" : " hours ago")
+    );
+  }
+  else {
+    return (
+      Math.floor(timeDifference / day) +
+      (Math.floor(timeDifference / day) === 1 ? " day ago" : " days ago")
     );
   }
 }

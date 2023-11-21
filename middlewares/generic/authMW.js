@@ -8,11 +8,11 @@ module.exports = function (objectrepository) {
       typeof req.session.belepve === "undefined" ||
       req.session.belepve !== true
     ) {
-      console.log("redirecting to login");
       return res.redirect("/login");
     }
     res.locals.isAuthenticated = true;
     res.locals._userId = req.session._userid;
+    req.session.cookie.maxAge = 180000;
     return next();
   };
 };

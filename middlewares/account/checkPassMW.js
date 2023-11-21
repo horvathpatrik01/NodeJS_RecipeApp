@@ -27,7 +27,8 @@ module.exports = function (objectrepository) {
         return res.redirect("/");
       } else {
         // Authentication failed
-        res.locals.error = "Hibás jelszó!";
+        res.locals.usernameError = ""
+        res.locals.passwordError = "Incorrect password or username!";
         // Handle the error, e.g., display an error message
         // or redirect to a login page with an error message
         // res.render('login', { error: 'Hibás jelszó!' });
