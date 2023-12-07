@@ -18,7 +18,7 @@ module.exports = function (objectrepository) {
       const user = await UserModel.findOne({
         username: username,
         password: password,
-      }).exec();
+      });
       if (user) {
         // Authentication successful
         req.session.belepve = true;
@@ -29,9 +29,6 @@ module.exports = function (objectrepository) {
         // Authentication failed
         res.locals.usernameError = ""
         res.locals.passwordError = "Incorrect password or username!";
-        // Handle the error, e.g., display an error message
-        // or redirect to a login page with an error message
-        // res.render('login', { error: 'Hibás jelszó!' });
       }
     } catch (error) {
       // Handle any potential errors, e.g., log the error or send an error response
